@@ -134,7 +134,8 @@ function tickTimer() {
 startBT.onclick = doStart;
 
 function updateButtonStatus() {
-    startBT.disabled = !(sI.intVal() && mI.intVal() && hI.intVal() && duration == -1);
+    let enabled = duration == -1 && (sI.intVal() || mI.intVal() || hI.intVal());
+    startBT.disabled = !enabled;
 }
 
 function makeInputSwitch(elem, prevInput, postInput) {
