@@ -112,11 +112,11 @@ function tickTimer() {
     s--;
     if (!h && !m && !s) {
         clearInterval(this);
-        hI.disabled = true;
-        mI.disabled = true;
-        sI.disabled = true;
-        startBT.disabled = false;
-        document.getElementById('link').disabled = true;
+        hI.disabled = false;
+        mI.disabled = false;
+        sI.disabled = false;
+        startBT.disabled = true;
+        document.getElementById('link').disabled = false;
         setPadded(sI, 0);
         current = null;
         return;
