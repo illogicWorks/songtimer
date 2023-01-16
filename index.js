@@ -19,6 +19,12 @@ function createPlayer(id) {
     });
 }
 
+function handleVideoChange() {
+    createPlayer(this.value.trim())
+}
+
+document.getElementById('link').onchange = handleVideoChange;
+
 function startTimer(time) {
     if (player == null || time == -1) alert('no video selected')
     setTimeout(function() {
