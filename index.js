@@ -51,10 +51,14 @@ function onYouTubeIframeAPIReady() {
     })
 }
 
+function toInt(id) {
+    return parseInt(document.getElementById(id).value);
+}
+
 function handleClick() {
-    let time = document.getElementById('h').value * 60 * 60
-             + document.getElementById('m').value * 60
-             + document.getElementById('s').value;
+    let time = toInt('h') * 60 * 60
+             + toInt('m') * 60
+             + toInt('s');
     startTimer(time);
 }
 
