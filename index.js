@@ -9,6 +9,7 @@ function onPlayerReady(event) {
 }
 
 function createPlayer(id) {
+    console.log('Changing player to ' + id)
     duration = -1;
     player = new YT.Player('playerdiv', {
         height: '360',
