@@ -31,7 +31,7 @@ function badUrl(url) {
         alert('bad url: ' + url)
 }
 
-function handleVideoChange() {
+function handleVideoChange(ev) {
     let val = this.value;
     console.log('Input set to ' + val);
     let {id, service} = getVideoId(val);
@@ -45,9 +45,9 @@ function handleVideoChange() {
 }
 
 document.getElementById('link').onchange = handleVideoChange;
-setTimeout(function() {
-    handleVideoChange.call(document.getElementById('link'));
-}, 1000)
+handleVideoChange({
+    target: document.getElementById('link')
+});
 
 // time in seconds
 function startTimer(time) {
