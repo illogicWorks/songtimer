@@ -1,5 +1,4 @@
 'use strict';
-let ev = null;
 let player = null;
 let duration = -1;
 
@@ -48,8 +47,9 @@ function handleVideoChange({target}) {
         return;
     }
     if (player != null)
-        player.destroy();
-    createPlayer(id)
+        player.cueVideoById(id);
+    else
+        createPlayer(id)
     startBT.disabled = false;
 }
 
@@ -90,6 +90,10 @@ function handleClick() {
 }
 
 function setPadded(el, val) {
+    if (val == 0) {
+        el.value = undefined;
+        return;
+    }
     if (val < 10)
         val = '0' + val;
     el.value = val;
@@ -103,7 +107,7 @@ function tickTimer() {
         hI.disabled = true;
         mI.disabled = true;
         sI.disabled = true;
-        startBT.disabled = false;
+        document.getElementById('start').disabled = false;
         sI.value = '00';
         current = null;
         return;
