@@ -59,13 +59,12 @@ function toInt(id) {
 let current = null;
 
 function handleClick() {
-    let timeInfo = {};
-    timeInfo.hI = document.getElementById('h');
-    timeInfo.mI = document.getElementById('m');
-    timeInfo.sI = document.getElementById('s');
-    timeInfo.h = parseInt(timeInfo.hI.value);
-    timeInfo.m = parseInt(timeInfo.mI.value);
-    timeInfo.s = parseInt(timeInfo.sI.value);
+    hI = document.getElementById('h');
+    mI = document.getElementById('m');
+    sI = document.getElementById('s');
+    h = parseInt(hI.value);
+    m = parseInt(mI.value);
+    s = parseInt(sI.value);
 
     let time = h * 60 * 60 + m * 60 + s;
     console.log('Starting ' + time + ' second timer');
@@ -80,7 +79,7 @@ function handleClick() {
     mI.disabled = true;
     sI.disabled = true;
     this.disabled = true;
-    current = timeInfo;
+    current = {hI, mI, sI, h, m, s};
     setInterval(tickTimer, 1000);
 }
 
