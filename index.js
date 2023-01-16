@@ -41,7 +41,11 @@ function handleVideoChange({target}) {
     let {id, service} = getVideoId(val);
     if (service != 'youtube') {
         if (val == '')
-            if (player != null) player.destroy()
+            if (player != null) {
+                player.destroy()
+                player = null;
+                duration = -1;
+            }
         else
             badUrl(val);
         updateButtonStatus();
