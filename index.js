@@ -5,38 +5,56 @@ let duration = -1;
 
 function onPlayerReady(event) {
     duration = player.getDuration();
-    console.log('hi ' + event);
+    console.log('Player is ready');
 }
 
 function createPlayer(id) {
+    console.debug('Changing player to ' + id)
+    duration = -1;
     player = new YT.Player('playerdiv', {
         height: '360',
         width: '640',
         videoId: id,
+        playerVars: {
+            controls: 0,
+            disablekb: 1,
+            rel: 0
+        },
         events: {
           'onReady': onPlayerReady
         }
     });
 }
 
-function handleVideoChange() {
-    let val = this.value;
-    if (val.startsWith('https://youtu.be/')) {
-        val = val.substring('https://youtu.be/'.length, val.length);
-    } else if (val.startsWith('https://www.youtube.com/watch?v=')) {
-        val = val.substring('https://www.youtube.com/watch?v='.length, val.length);
-    } else {
-        alert('bad url')
+function badUrl(url) {
+    if (url)
+        alert('bad url: ' + url)
+}
+
+function handleVideoChange({target}) {
+    let val = target.value;
+    console.log('Input set to ' + val);
+    let {id, service} = getVideoId(val);
+    if (service != 'youtube') {
+        badUrl(val);
         return;
     }
-    createPlayer(val)
+    if (player != null)
+        player.destroy();
+    createPlayer(id)
 }
 
 document.getElementById('link').onchange = handleVideoChange;
+function onYouTubeIframeAPIReady() {
+    handleVideoChange({
+        target: document.getElementById('link')
+    })
+}
 
+// time in seconds
 function startTimer(time) {
     if (player == null || time == -1) alert('no video selected')
     setTimeout(function() {
         player.playVideo();
-    }, time - duration * 1000);
+    }, time * 1000 - duration * 1000);
 }
