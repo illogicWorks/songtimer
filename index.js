@@ -45,7 +45,9 @@ function handleVideoChange() {
 }
 
 document.getElementById('link').onchange = handleVideoChange;
-handleVideoChange.call(document.getElementById('link'));
+setTimeout(function() {
+    handleVideoChange.call(document.getElementById('link'));
+},10)
 
 // time in seconds
 function startTimer(time) {
