@@ -87,7 +87,7 @@ function handleClick() {
 
 function setPadded(el, val) {
     if (val == 0) {
-        el.value = undefined;
+        el.value = '';
         return;
     }
     if (val < 10)
