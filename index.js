@@ -9,7 +9,7 @@ function onPlayerReady(event) {
 }
 
 function createPlayer(id) {
-    console.log('Changing player to ' + id)
+    console.debug('Changing player to ' + id)
     duration = -1;
     player = new YT.Player('playerdiv', {
         height: '360',
@@ -31,20 +31,19 @@ function badUrl(url) {
 }
 
 function handleVideoChange() {
-    let val = this.value;
-    let videoInfo = getVideoId(this.value);
-    if (videoInfo.service != 'youtube') {
+    console.log('Input set to ' + this.value);
+    let {id, service} = getVideoId(this.value);
+    if (service != 'youtube') {
         badUrl(val);
         return;
-    } else {
-        val = videoInfo.id;
     }
     if (player != null)
         player.destroy();
-    createPlayer(val)
+    createPlayer(id)
 }
 
 document.getElementById('link').onchange = handleVideoChange;
+handleVideoChange.call(document.getElementById('link'));
 
 // time in seconds
 function startTimer(time) {
