@@ -3,6 +3,12 @@ let ev = null;
 let player = null;
 let duration = -1;
 
+const startBT = document.getElementById('start');
+
+const hI = document.getElementById('h');
+const mI = document.getElementById('m');
+const sI = document.getElementById('s');
+
 function onPlayerReady(event) {
     duration = player.getDuration();
     console.log('Player is ready');
@@ -27,8 +33,10 @@ function createPlayer(id) {
 }
 
 function badUrl(url) {
-    if (url)
-        alert('bad url: ' + url)
+    if (url){
+        console.warn('bad url: ' + url);
+        startBT.disabled = true;
+    }
 }
 
 function handleVideoChange({target}) {
@@ -42,6 +50,7 @@ function handleVideoChange({target}) {
     if (player != null)
         player.destroy();
     createPlayer(id)
+    startBT.disabled = false;
 }
 
 document.getElementById('link').onchange = handleVideoChange;
@@ -54,10 +63,6 @@ function onYouTubeIframeAPIReady() {
 function toInt(id) {
     return parseInt(document.getElementById(id).value);
 }
-
-const hI = document.getElementById('h');
-const mI = document.getElementById('m');
-const sI = document.getElementById('s');
 
 // record TimeInfo(int h, int m, int s)
 let current = null;
@@ -98,7 +103,7 @@ function tickTimer() {
         hI.disabled = true;
         mI.disabled = true;
         sI.disabled = true;
-        document.getElementById('start').disabled = false;
+        startBT.disabled = false;
         sI.value = '00';
         current = null;
         return;
@@ -117,7 +122,7 @@ function tickTimer() {
     setPadded(sI, s);
 }
 
-document.getElementById('start').onclick = handleClick;
+startBT.onclick = handleClick;
 
 function makeInputSwitch(elem, prevInput, postInput) {
     const MAX_LEN = 2;
