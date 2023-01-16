@@ -32,10 +32,8 @@ function createPlayer(id) {
 }
 
 function badUrl(url) {
-    if (url){
-        console.warn('bad url: ' + url);
-        startBT.disabled = true;
-    }
+    console.warn('bad url: ' + url);
+    startBT.disabled = true;
 }
 
 function handleVideoChange({target}) {
@@ -43,7 +41,10 @@ function handleVideoChange({target}) {
     console.log('Input set to ' + val);
     let {id, service} = getVideoId(val);
     if (service != 'youtube') {
-        badUrl(val);
+        if (url == '')
+            if (player != null) player.destroy()
+        else
+            badUrl(val);
         return;
     }
     if (player != null)
