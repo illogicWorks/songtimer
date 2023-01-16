@@ -9,7 +9,7 @@ function onPlayerReady(event) {
 }
 
 function createPlayer(id) {
-    player = YT.createPlayer('playerdiv', {
+    player = new YT.Player('playerdiv', {
         height: '360',
         width: '640',
         videoId: id,
