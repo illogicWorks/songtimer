@@ -4,14 +4,12 @@ let player = null;
 let duration = -1;
 
 function onPlayerReady(event) {
-    ev = event;
-    //duration = event.player.getDuration();
-    player = event.player;
+    duration = player.getDuration();
     console.log('hi ' + event);
 }
 
 function createPlayer(id) {
-    let player = new YT.Player('playerdiv', {
+    player = new YT.Player('playerdiv', {
         height: '360',
         width: '640',
         videoId: id,
