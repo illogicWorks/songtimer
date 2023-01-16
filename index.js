@@ -51,6 +51,16 @@ function onYouTubeIframeAPIReady() {
     })
 }
 
+function handleClick() {
+    let time = document.getElementById('h') * 60 * 60
+             + document.getElementById('m') * 60
+             + document.getElementById('s');
+    startTimer(time);
+}
+
+document.getElementById('start').onclick = handleClick;
+
+
 // time in seconds
 function startTimer(time) {
     if (player == null || time == -1) alert('no video selected')
