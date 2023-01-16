@@ -30,7 +30,7 @@ function handleVideoChange() {
         alert('bad url')
     }
     console.log(val);
-    createPlayer(this.value.trim())
+    createPlayer(val)
 }
 
 document.getElementById('link').onchange = handleVideoChange;
