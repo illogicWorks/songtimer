@@ -11,13 +11,22 @@
 	<script defer src="index.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
         .countdown{
-            background-color: transparent;
             border: 0;
             color: white;
-            font-size: 5em;
+            font-size: 4.8em;
             text-align: center;
-            margin-right: 10em;
+            width: 1.2em;
+            background: 
+            linear-gradient(rgb(66, 77, 82), #fff) center bottom 5px /calc(100% - 10px) 2px no-repeat;
         }
 
         .countdown:focus{
@@ -29,14 +38,19 @@
     <div class="container p-5 my-5 text-white text-center">
         <h1>Song Timer</h1>
         <p>Just paste any youtube link and set the timer running!</p>
-
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Link</span>
             <input id="link" type="text" class="form-control" placeholder="Paste your youtube link" aria-label="Link" aria-describedby="basic-addon1" autofocus>
         </div>
 
-        <input class="countdown">
-
+        <input id="h" class="countdown" type="tel" maxlength="2">
+        <p1 style="font-size: 2em;">:</p1>
+        <input id="m" class="countdown" type="tel" maxlength="2">
+        <p1 style="font-size: 2em;">:</p1>
+        <input id="s" class="countdown" type="tel" maxlength="2">
+        <br>
+        <button id="start" type="button" class="btn btn-primary my-5 px-4">Let's go!</button>
+        <br>
         <div id="playerdiv"></div>
     </div>
   </body>
