@@ -55,13 +55,14 @@ function toInt(id) {
     return parseInt(document.getElementById(id).value);
 }
 
-// record TimeInfo(Input hI, Input mI, Input sI, int h, int m, int s)
+let hI = document.getElementById('h');
+let mI = document.getElementById('m');
+let sI = document.getElementById('s');
+
+// record TimeInfo(int h, int m, int s)
 let current = null;
 
 function handleClick() {
-    let hI = document.getElementById('h');
-    let mI = document.getElementById('m');
-    let sI = document.getElementById('s');
     let h = parseInt(hI.value);
     let m = parseInt(mI.value);
     let s = parseInt(sI.value);
@@ -79,12 +80,12 @@ function handleClick() {
     mI.disabled = true;
     sI.disabled = true;
     this.disabled = true;
-    current = {hI, mI, sI, h, m, s};
+    current = {h, m, s};
     setInterval(tickTimer, 1000);
 }
 
 function tickTimer() {
-    let {hI, mI, sI, h, m, s} = current;
+    let {h, m, s} = current;
     s--;
     if (!h && !m && !s) {
         clearInterval(this);
