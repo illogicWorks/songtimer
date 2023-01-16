@@ -5,14 +5,20 @@ let duration = -1;
 
 function onPlayerReady(event) {
     duration = player.getDuration();
-    console.log('hi ' + event);
+    console.log('Player is ready');
 }
 
 function createPlayer(id) {
+    duration = -1;
     player = new YT.Player('playerdiv', {
         height: '360',
         width: '640',
         videoId: id,
+        playerVars: {
+            controls: 0,
+            disablekb: 1,
+            rel: 0
+        },
         events: {
           'onReady': onPlayerReady
         }
