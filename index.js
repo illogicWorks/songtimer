@@ -31,8 +31,8 @@ function badUrl(url) {
         alert('bad url: ' + url)
 }
 
-function handleVideoChange(ev) {
-    let val = this.value;
+function handleVideoChange({target}) {
+    let val = target.value;
     console.log('Input set to ' + val);
     let {id, service} = getVideoId(val);
     if (service != 'youtube') {
