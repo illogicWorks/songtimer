@@ -1,9 +1,11 @@
 'use strict';
+let ev = null;
 let player = null;
 let duration = -1;
 
 function onPlayerReady(event) {
-    duration = event.player.getDuration();
+    ev = event;
+    //duration = event.player.getDuration();
     player = event.player;
     console.log('hi ' + event);
 }
