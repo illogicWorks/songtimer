@@ -99,7 +99,7 @@ function tickTimer() {
         mI.disabled = true;
         sI.disabled = true;
         document.getElementById('start').disabled = false;
-        hI.value = '00';
+        sI.value = '00';
         current = null;
         return;
     }
