@@ -25,13 +25,12 @@ function badUrl(url) {
 
 function handleVideoChange() {
     let val = this.value;
-    if (val.startsWith('https://youtu.be/')) {
-        val = val.substring('https://youtu.be/'.length, val.length);
-    } else if (val.startsWith('https://www.youtube.com/watch?v=')) {
-        val = val.substring('https://www.youtube.com/watch?v='.length, val.length);
-    } else {
-        badUrl(url);
+    let videoInfo = getVideoId(this.value);
+    if (videoInfo.service != 'youtube') {
+        badUrl(val);
         return;
+    } else {
+        val = videoInfo.id;
     }
     createPlayer(val)
 }
