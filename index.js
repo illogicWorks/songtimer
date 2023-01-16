@@ -39,7 +39,7 @@ function handleVideoChange({target}) {
         return;
     }
     if (player != null)
-        player.loadVideoById(id);
+        player.cueVideoById(id);
     else
         createPlayer(id)
 }
