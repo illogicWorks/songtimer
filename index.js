@@ -45,9 +45,11 @@ function handleVideoChange({target}) {
 }
 
 document.getElementById('link').onchange = handleVideoChange;
-handleVideoChange({
-    target: document.getElementById('link')
-});
+function onYouTubeIframeAPIReady() {
+    handleVideoChange({
+        target: document.getElementById('link')
+    })
+}
 
 // time in seconds
 function startTimer(time) {
