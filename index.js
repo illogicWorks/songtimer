@@ -39,8 +39,9 @@ function handleVideoChange({target}) {
         return;
     }
     if (player != null)
-        player.destroy();
-    createPlayer(id)
+        player.loadVideoById(id);
+    else
+        createPlayer(id)
 }
 
 document.getElementById('link').onchange = handleVideoChange;
