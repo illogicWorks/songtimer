@@ -38,6 +38,8 @@ function handleVideoChange() {
     } else {
         val = videoInfo.id;
     }
+    if (player != null)
+        player.destroy();
     createPlayer(val)
 }
 
