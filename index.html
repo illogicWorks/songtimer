@@ -20,7 +20,6 @@
         .countdown {
                 border: 0;
                 color: white;
-                font-size: 4.8em;
                 text-align: center;
                 width: 1.2em;
                 background: 
@@ -28,31 +27,49 @@
         }
 
         /* Small devices (portrait tablets and large phones, 600px and up) */
-        @media only screen and (max-width: 350px) {
+        @media only screen and (max-width: 327px) {
             .countdown {
-                font-size: 3em;
+                font-size: 10vw;
+            }
+        }
+
+
+        @media only screen and (min-width: 327px) {
+            .countdown {
+                font-size: 50px;
+            }
+            .sep {
+                font-size: 40px;
+            }
+        }
+
+        @media only screen and (min-width: 400px) {
+            .countdown {
+                font-size: 70px;
+            }
+            .sep {
+                font-size: 50px;
             }
         }
 
         @media only screen and (min-width: 600px) {
             .countdown {
-                font-size: 3.8em;
+                font-size: 80px;
+            }
+            .sep {
+                font-size: 60px;
+                vertical-align:super;
             }
         }
 
         /* Medium devices (landscape tablets, 768px and up) */
         @media only screen and (min-width: 768px) {
-
-        }
-
-        /* Large devices (laptops/desktops, 992px and up) */
-        @media only screen and (min-width: 992px) {
-
-        }
-
-        /* Extra large devices (large laptops and desktops, 1200px and up) */
-        @media only screen and (min-width: 1200px) {
-
+            .countdown {
+                font-size: 90px;
+            }
+            .sep {
+                font-size: 4em;
+            }
         }
         
         .countdown:focus{
@@ -70,9 +87,9 @@
         </div>
 
         <input id="h" class="countdown" type="tel" maxlength="2" placeholder="00">
-        <p1 style="font-size: 4em;">:</p1>
+        <p1 class="sep">:</p1>
         <input id="m" class="countdown" type="tel" maxlength="2" placeholder="00">
-        <p1 style="font-size: 4em;">:</p1>
+        <p1 class="sep">:</p1>
         <input id="s" class="countdown" type="tel" maxlength="2" placeholder="00">
         <br>
         <button id="start" type="button" class="btn btn-primary my-5 px-4" disabled>Let's go!</button>
