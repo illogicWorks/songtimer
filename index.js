@@ -60,10 +60,6 @@ function onYouTubeIframeAPIReady() {
     })
 }
 
-function toInt(id) {
-    return parseInt(document.getElementById(id).value);
-}
-
 // record TimeInfo(int h, int m, int s)
 let current = null;
 
@@ -107,7 +103,7 @@ function tickTimer() {
         hI.disabled = true;
         mI.disabled = true;
         sI.disabled = true;
-        document.getElementById('start').disabled = false;
+        startBT.disabled = false;
         sI.value = '00';
         current = null;
         return;
