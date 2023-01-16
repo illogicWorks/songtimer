@@ -21,15 +21,14 @@ function createPlayer(id) {
 
 function handleVideoChange() {
     let val = this.value;
-    console.log(val);
     if (val.startsWith('https://youtu.be/')) {
         val = val.substring('https://youtu.be/'.length, val.length);
     } else if (val.startsWith('https://www.youtube.com/watch?v=')) {
         val = val.substring('https://www.youtube.com/watch?v='.length, val.length);
     } else {
         alert('bad url')
+        return;
     }
-    console.log(val);
     createPlayer(val)
 }
 
@@ -39,5 +38,5 @@ function startTimer(time) {
     if (player == null || time == -1) alert('no video selected')
     setTimeout(function() {
         player.playVideo();
-    }, time - duration);
+    }, time - duration * 1000);
 }
