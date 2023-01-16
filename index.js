@@ -32,10 +32,8 @@ function createPlayer(id) {
 }
 
 function badUrl(url) {
-    if (url){
-        console.warn('bad url: ' + url);
-        startBT.disabled = true;
-    }
+    console.warn('bad url: ' + url);
+    startBT.disabled = true;
 }
 
 function handleVideoChange({target}) {
@@ -43,7 +41,10 @@ function handleVideoChange({target}) {
     console.log('Input set to ' + val);
     let {id, service} = getVideoId(val);
     if (service != 'youtube') {
-        badUrl(val);
+        if (val == '')
+            if (player != null) player.destroy()
+        else
+            badUrl(val);
         return;
     }
     if (player != null)
@@ -60,13 +61,19 @@ function onYouTubeIframeAPIReady() {
     })
 }
 
-// record TimeInfo(int h, int m, int s)
+// record TimeInfo(int h, int m, int s, TimeOut timeout)
 let current = null;
 
-function handleClick() {
-    let h = parseInt(hI.value);
-    let m = parseInt(mI.value);
-    let s = parseInt(sI.value);
+HTMLInputElement.prototype.intVal = function() {
+    let val = this.value;
+    if (val == '') return 0;
+    return parseInt(val);
+}
+
+function doStart() {
+    let h = hI.intVal();
+    let m = mI.intVal();
+    let s = sI.intVal();
 
     let time = h * 60 * 60 + m * 60 + s;
     console.log('Starting ' + time + ' second timer');
@@ -104,7 +111,7 @@ function tickTimer() {
         mI.disabled = true;
         sI.disabled = true;
         startBT.disabled = false;
-        sI.value = '00';
+        setPadded(sI, 0);
         current = null;
         return;
     }
@@ -122,7 +129,7 @@ function tickTimer() {
     setPadded(sI, s);
 }
 
-startBT.onclick = handleClick;
+startBT.onclick = doStart;
 
 function makeInputSwitch(elem, prevInput, postInput) {
     const MAX_LEN = 2;
