@@ -27,12 +27,14 @@ function createPlayer(id) {
 }
 
 function badUrl(url) {
-    alert('bad url')
+    if (url)
+        alert('bad url: ' + url)
 }
 
 function handleVideoChange() {
-    console.log('Input set to ' + this.value);
-    let {id, service} = getVideoId(this.value);
+    let val = this.value;
+    console.log('Input set to ' + val);
+    let {id, service} = getVideoId(val);
     if (service != 'youtube') {
         badUrl(val);
         return;
