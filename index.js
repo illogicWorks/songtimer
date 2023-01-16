@@ -21,7 +21,7 @@ function createPlayer(id) {
 
 function handleVideoChange() {
     let val = this.value;
-    console.log(this.value);
+    console.log(val);
     if (val.startsWith('https://youtu.be/')) {
         val = val.substring('https://youtu.be/'.length, val.length);
     } else if (val.startsWith('https://www.youtube.com/watch?v=')) {
@@ -29,6 +29,7 @@ function handleVideoChange() {
     } else {
         alert('bad url')
     }
+    console.log(val);
     createPlayer(this.value.trim())
 }
 
