@@ -33,7 +33,6 @@ function createPlayer(id) {
 
 function badUrl(url) {
     console.warn('bad url: ' + url);
-    startBT.disabled = true;
 }
 
 function handleVideoChange({target}) {
@@ -45,13 +44,14 @@ function handleVideoChange({target}) {
             if (player != null) player.destroy()
         else
             badUrl(val);
+        updateButtonStatus();
         return;
     }
     if (player != null)
         player.cueVideoById(id);
     else
-        createPlayer(id)
-    startBT.disabled = false;
+        createPlayer(id);
+    updateButtonStatus();
 }
 
 document.getElementById('link').onchange = handleVideoChange;
@@ -87,6 +87,7 @@ function doStart() {
     hI.disabled = true;
     mI.disabled = true;
     sI.disabled = true;
+    document.getElementById('link').disabled = true;
     this.disabled = true;
     current = {h, m, s};
     setInterval(tickTimer, 1000);
@@ -111,6 +112,7 @@ function tickTimer() {
         mI.disabled = true;
         sI.disabled = true;
         startBT.disabled = false;
+        document.getElementById('link').disabled = true;
         setPadded(sI, 0);
         current = null;
         return;
@@ -130,6 +132,10 @@ function tickTimer() {
 }
 
 startBT.onclick = doStart;
+
+function updateButtonStatus() {
+    startBT.disabled = !(sI.intVal() && mI.intVal() && hI.intVal() && duration == -1);
+}
 
 function makeInputSwitch(elem, prevInput, postInput) {
     const MAX_LEN = 2;
