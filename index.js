@@ -141,6 +141,7 @@ function updateButtonStatus() {
 
 function makeInputSwitch(elem, prevInput, postInput) {
     const MAX_LEN = 2;
+    elem.addEventListener('input', updateButtonStatus);
     elem.addEventListener('keydown', function(e) {
         if (e.isComposing || e.keyCode === 229) {
             return;
