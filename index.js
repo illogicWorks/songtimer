@@ -59,12 +59,12 @@ function toInt(id) {
 let current = null;
 
 function handleClick() {
-    hI = document.getElementById('h');
-    mI = document.getElementById('m');
-    sI = document.getElementById('s');
-    h = parseInt(hI.value);
-    m = parseInt(mI.value);
-    s = parseInt(sI.value);
+    let hI = document.getElementById('h');
+    let mI = document.getElementById('m');
+    let sI = document.getElementById('s');
+    let h = parseInt(hI.value);
+    let m = parseInt(mI.value);
+    let s = parseInt(sI.value);
 
     let time = h * 60 * 60 + m * 60 + s;
     console.log('Starting ' + time + ' second timer');
