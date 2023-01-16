@@ -85,6 +85,10 @@ function handleClick() {
 }
 
 function setPadded(el, val) {
+    if (val == 0) {
+        el.value = undefined;
+        return;
+    }
     if (val < 10)
         val = '0' + val;
     el.value = val;
@@ -99,7 +103,7 @@ function tickTimer() {
         mI.disabled = true;
         sI.disabled = true;
         document.getElementById('start').disabled = false;
-        sI.value = '00';
+        setPadded(sI, 0);
         current = null;
         return;
     }
