@@ -55,9 +55,9 @@ function toInt(id) {
     return parseInt(document.getElementById(id).value);
 }
 
-let hI = document.getElementById('h');
-let mI = document.getElementById('m');
-let sI = document.getElementById('s');
+const hI = document.getElementById('h');
+const mI = document.getElementById('m');
+const sI = document.getElementById('s');
 
 // record TimeInfo(int h, int m, int s)
 let current = null;
@@ -119,7 +119,6 @@ function tickTimer() {
 
 document.getElementById('start').onclick = handleClick;
 
-
 function makeInputSwitch(elem, prevInput, postInput) {
     const MAX_LEN = 2;
     elem.addEventListener('keyup', function(e) {
@@ -131,10 +130,6 @@ function makeInputSwitch(elem, prevInput, postInput) {
     }, false)
 }
 
-let hourInput = document.getElementById("h");
-let minuteInput = document.getElementById("m");
-let secondInput = document.getElementById("s");
-
-makeInputSwitch(hourInput, null, minuteInput);
-makeInputSwitch(minuteInput, hourInput, secondInput);
-makeInputSwitch(secondInput, minuteInput, null);
+makeInputSwitch(hI, null, mI);
+makeInputSwitch(mI, hI, sI);
+makeInputSwitch(sI, mI, null);
