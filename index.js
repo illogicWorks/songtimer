@@ -84,12 +84,11 @@ function handleClick() {
     setInterval(tickTimer, 1000);
 }
 
-function valuePadded(val) {
+function setPadded(el, val) {
     if (val < 10)
         val = '0' + val;
-    this.value = val;
+    el.value = val;
 }
-HTMLInputElement.prototype.valuePadded = valuePadded;
 
 function tickTimer() {
     let {h, m, s} = current;
@@ -107,13 +106,13 @@ function tickTimer() {
         m--;
         if (m < 0) {
             m = 59;
-            hI.valuePadded(--current.h);
+            setPadded(hI, --current.h);
         }
         current.m = m;
-        mI.valuePadded(m);
+        setPadded(mI, m);
     }
     current.s = s;
-    sI.valuePadded(s);
+    setPadded(sI, s);
 }
 
 document.getElementById('start').onclick = handleClick;
