@@ -58,3 +58,23 @@ function startTimer(time) {
         player.playVideo();
     }, time * 1000 - duration * 1000);
 }
+
+
+function makeInputSwitch(elem, prevInput, postInput) {
+    const MAX_LEN = 2;
+    elem.addEventListener('keyup', function(e) {
+        if (e.srcElement.value.length >= MAX_LEN) {
+            if(postInput != null) postInput.select();
+        } else if (e.srcElement.value.length == 0) {
+            if(prevInput != null) prevInput.select();
+        }
+    }, false)
+}
+
+let hourInput = document.getElementById("h");
+let minuteInput = document.getElementById("m");
+let secondInput = document.getElementById("s");
+
+makeInputSwitch(hourInput, null, minuteInput);
+makeInputSwitch(minuteInput, hourInput, secondInput);
+makeInputSwitch(secondInput, minuteInput, null);
