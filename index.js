@@ -20,6 +20,15 @@ function createPlayer(id) {
 }
 
 function handleVideoChange() {
+    let val = this.value;
+    console.log(this.value);
+    if (val.startsWith('https://youtu.be/')) {
+        val = val.substring('https://youtu.be/'.length, val.length);
+    } else if (val.startsWith('https://www.youtube.com/watch?v=')) {
+        val = val.substring('https://www.youtube.com/watch?v='.length, val.length);
+    } else {
+        alert('bad url')
+    }
     createPlayer(this.value.trim())
 }
 
