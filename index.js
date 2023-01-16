@@ -1,5 +1,4 @@
 'use strict';
-let ev = null;
 let player = null;
 let duration = -1;
 
