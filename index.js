@@ -64,6 +64,7 @@ document.getElementById('start').onclick = handleClick;
 // time in seconds
 function startTimer(time) {
     if (player == null || time == -1) alert('no video selected')
+    console.log('Starting ' + time + ' second timer');
     setTimeout(function() {
         player.playVideo();
     }, time * 1000 - duration * 1000);
