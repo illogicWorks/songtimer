@@ -52,9 +52,9 @@ function onYouTubeIframeAPIReady() {
 }
 
 function handleClick() {
-    let time = document.getElementById('h') * 60 * 60
-             + document.getElementById('m') * 60
-             + document.getElementById('s');
+    let time = document.getElementById('h').value * 60 * 60
+             + document.getElementById('m').value * 60
+             + document.getElementById('s').value;
     startTimer(time);
 }
 
