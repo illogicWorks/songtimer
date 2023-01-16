@@ -134,7 +134,8 @@ function tickTimer() {
 startBT.onclick = doStart;
 
 function updateButtonStatus() {
-    let enabled = duration == -1 && (sI.intVal() || mI.intVal() || hI.intVal());
+    console.log('Updating button status');
+    let enabled = duration != -1 && (sI.intVal() || mI.intVal() || hI.intVal());
     startBT.disabled = !enabled;
 }
 
