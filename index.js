@@ -131,9 +131,13 @@ startBT.onclick = handleClick;
 function makeInputSwitch(elem, prevInput, postInput) {
     const MAX_LEN = 2;
     elem.addEventListener('keyup', function(e) {
+        if (e.isComposing || e.keyCode === 229) {
+            return;
+        }
+        
         if (e.srcElement.value.length >= MAX_LEN) {
             if(postInput != null) postInput.select();
-        } else if (e.srcElement.value.length == 0) {
+        } else if (e.keyCode === 8) {
             if(prevInput != null) prevInput.select();
         }
     }, false)
