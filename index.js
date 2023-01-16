@@ -19,6 +19,10 @@ function createPlayer(id) {
     });
 }
 
+function badUrl(url) {
+    alert('bad url')
+}
+
 function handleVideoChange() {
     let val = this.value;
     if (val.startsWith('https://youtu.be/')) {
@@ -26,7 +30,7 @@ function handleVideoChange() {
     } else if (val.startsWith('https://www.youtube.com/watch?v=')) {
         val = val.substring('https://www.youtube.com/watch?v='.length, val.length);
     } else {
-        alert('bad url')
+        badUrl(url);
         return;
     }
     createPlayer(val)
@@ -34,9 +38,10 @@ function handleVideoChange() {
 
 document.getElementById('link').onchange = handleVideoChange;
 
+// time in seconds
 function startTimer(time) {
     if (player == null || time == -1) alert('no video selected')
     setTimeout(function() {
         player.playVideo();
-    }, time - duration * 1000);
+    }, time * 1000 - duration * 1000);
 }
