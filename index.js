@@ -17,8 +17,8 @@ function createPlayer(id) {
     console.debug('Changing player to ' + id)
     duration = -1;
     player = new YT.Player('playerdiv', {
-        /*height: '360',
-        width: '640',*/
+        height: '100%',
+        width: '100%',
         videoId: id,
         playerVars: {
             controls: 0,
