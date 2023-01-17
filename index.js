@@ -41,7 +41,7 @@ function handleVideoChange({target}) {
     let val = target.value;
     console.debug('Link input set to ' + val);
     let {id, service} = getVideoId(val);
-    if (service != 'youtube') {
+    if (service != 'youtube' || id == undefined) {
         if (val == '')
             if (player != null) {
                 player.destroy()
