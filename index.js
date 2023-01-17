@@ -42,14 +42,15 @@ function handleVideoChange({target}) {
     console.debug('Link input set to ' + val);
     let {id, service} = getVideoId(val);
     if (service != 'youtube' || id == undefined) {
-        if (val == '')
+        if (val == '') {
             if (player != null) {
                 player.destroy()
                 player = null;
                 duration = -1;
             }
-        else
+        } else {
             badUrl(val);
+        }
         updateButtonStatus();
         return;
     }
