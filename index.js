@@ -91,9 +91,7 @@ function doStart() {
         alert('no video selected or not yet loaded');
         return;
     }
-    let timeout = setTimeout(function() {
-        player.playVideo();
-    }, time * 1000 - duration * 1000);
+    let timeout = setTimeout(player.playVideo, time * 1000 - duration * 1000);
     hI.disabled = true;
     mI.disabled = true;
     sI.disabled = true;
