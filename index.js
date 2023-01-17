@@ -101,6 +101,13 @@ function doStart() {
     this.disabled = true;
     let interval = setInterval(tickTimer, 1000);
     current = {h, m, s, interval, timeout};
+    formatAll()
+}
+
+function formatAll() {
+    setPadded(hI, current.h)
+    setPadded(mI, current.m)
+    setPadded(sI, current.s)
 }
 
 function setPadded(el, val) {
