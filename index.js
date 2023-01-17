@@ -59,7 +59,7 @@ function handleVideoChange({target}) {
         createPlayer(id);
     updateButtonStatus();
     // sanitize stupid urls
-    if (val.length > 30) {
+    if (val.length > 50) {
         target.value = 'https://youtube.com/watch?v=' + id
     }
 }
