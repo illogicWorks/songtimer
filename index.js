@@ -3,6 +3,7 @@ let player = null;
 let duration = -1;
 
 const startBT = document.getElementById('start');
+const linkInput = document.getElementById('link');
 
 const hI = document.getElementById('h');
 const mI = document.getElementById('m');
@@ -58,10 +59,10 @@ function handleVideoChange({target}) {
     updateButtonStatus();
 }
 
-document.getElementById('link').onchange = handleVideoChange;
+linkInput.onchange = handleVideoChange;
 function onYouTubeIframeAPIReady() {
     handleVideoChange({
-        target: document.getElementById('link')
+        target: linkInput
     })
 }
 
@@ -91,7 +92,7 @@ function doStart() {
     hI.disabled = true;
     mI.disabled = true;
     sI.disabled = true;
-    document.getElementById('link').disabled = true;
+    linkInput.disabled = true;
     this.disabled = true;
     current = {h, m, s};
     setInterval(tickTimer, 1000);
@@ -116,7 +117,7 @@ function tickTimer() {
         mI.disabled = false;
         sI.disabled = false;
         startBT.disabled = true;
-        document.getElementById('link').disabled = false;
+        linkInput.disabled = false;
         setPadded(sI, 0);
         current = null;
         return;
