@@ -66,7 +66,7 @@ function onYouTubeIframeAPIReady() {
     })
 }
 
-// record TimeInfo(int h, int m, int s, TimeOut timeout)
+// record TimeInfo(int h, int m, int s, Interval interval, TimeOut timeout)
 let current = null;
 
 HTMLInputElement.prototype.intVal = function() {
@@ -86,7 +86,7 @@ function doStart() {
         alert('no video selected or not yet loaded');
         return;
     }
-    setTimeout(function() {
+    let timeout = setTimeout(function() {
         player.playVideo();
     }, time * 1000 - duration * 1000);
     hI.disabled = true;
@@ -94,8 +94,8 @@ function doStart() {
     sI.disabled = true;
     linkInput.disabled = true;
     this.disabled = true;
-    current = {h, m, s};
-    setInterval(tickTimer, 1000);
+    let interval = setInterval(tickTimer, 1000);
+    current = {h, m, s, interval, timeout};
 }
 
 function setPadded(el, val) {
@@ -112,7 +112,7 @@ function tickTimer() {
     let {h, m, s} = current;
     s--;
     if (!h && !m && !s) {
-        clearInterval(this);
+        clearInterval(current.interval);
         hI.disabled = false;
         mI.disabled = false;
         sI.disabled = false;
