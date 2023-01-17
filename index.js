@@ -87,10 +87,6 @@ function doStart() {
 
     let time = h * 60 * 60 + m * 60 + s;
     console.log('Starting ' + time + ' second timer');
-    if (player == null || time == -1) {
-        alert('no video selected or not yet loaded');
-        return;
-    }
     let timeout = setTimeout(function() {
         player.playVideo();
     }, time * 1000 - duration * 1000);
