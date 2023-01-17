@@ -11,11 +11,12 @@ const sI = document.getElementById('s');
 
 function onPlayerReady(event) {
     duration = player.getDuration();
-    console.log('Player is ready');
+    console.debug('Player is ready');
+    updateButtonStatus();
 }
 
 function createPlayer(id) {
-    console.debug('Changing player to ' + id)
+    console.debug('Creating player of ' + id)
     duration = -1;
     player = new YT.Player('playerdiv', {
         height: '100%',
@@ -38,7 +39,7 @@ function badUrl(url) {
 
 function handleVideoChange({target}) {
     let val = target.value;
-    console.log('Input set to ' + val);
+    console.debug('Link input set to ' + val);
     let {id, service} = getVideoId(val);
     if (service != 'youtube') {
         if (val == '')
@@ -57,6 +58,10 @@ function handleVideoChange({target}) {
     else
         createPlayer(id);
     updateButtonStatus();
+    // sanitize stupid urls
+    if (val.length > 30) {
+        target.value = 'https://youtube.com/watch?v=' + id
+    }
 }
 
 linkInput.onchange = handleVideoChange;
@@ -139,7 +144,7 @@ function tickTimer() {
 startBT.onclick = doStart;
 
 function updateButtonStatus() {
-    console.log('Updating button status');
+    console.debug('Updating button status');
     let enabled = duration != -1 && (sI.intVal() || mI.intVal() || hI.intVal());
     startBT.disabled = !enabled;
 }
