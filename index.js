@@ -90,7 +90,7 @@ function doStart() {
     console.log('Starting ' + time + ' second timer');
     let timeout = setTimeout(function() {
         player.playVideo();
-    }, time * 1000 - duration * 1000);
+    }, (time - duration) * 1000);
     hI.disabled = true;
     mI.disabled = true;
     sI.disabled = true;
